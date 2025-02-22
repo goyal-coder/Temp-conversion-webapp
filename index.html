@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <style>
+            body {
+
+                font-family: Arial, sans-serif;
+                background: radial-gradient(white, blue);
+                text-align: center;
+            }
+
+            form {
+                border: 1px solid black;
+                box-shadow: 0 0 8px black;
+                background-color: rgba(75, 75, 255, 0.363);
+            }
+
+            button {
+                padding: 0.6em;
+                font-size: 0.88em;
+                border: 2px solid black;
+                border-radius: 8px;
+                background-color: blue;
+                box-shadow: 0 0 7px blue;
+            }
+
+            button:hover {
+                opacity: 0.7;
+                border: 2px solid transparent;
+            }
+
+            p {
+                border: 1px solid transparent;
+                box-shadow: 0 0 7px black;
+                width: 50%;
+                margin: 3em auto;
+                padding: 1em;
+                text-align: start;
+            }
+        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <form>
+            <h1>Temp conversion:</h1>
+            <input type="number" id="textbox" value="0">
+            <br><br>
+            <input type="radio" id="toFahrenheit" name="unit">
+            <label for="toFahrenheit">Celsius=> Fahrenheit</label>
+            <br><br>
+            <input type="radio" id="toCelcius" name="unit">
+            <label for="toCelcius">Fahrenheit=> Celsius</label>
+            <br><br>
+            <button type="button" onclick="convert()">submit</button>
+            <p id="result">Result:
+            </p>
+        </form>
+
+        <script>
+
+            const textbox = document.getElementById("textbox");
+            const toFahrenheit = document.getElementById("toFahrenheit");
+            const toCelcius = document.getElementById("toCelcius")
+            const result = document.getElementById("result")
+            let temp;
+
+            function convert() {
+                const inputTemp = parseFloat(textbox.value);
+                if (toFahrenheit.checked) {
+                    temp = (inputTemp * 9 / 5) + 32;
+                    result.textContent = `Result: ${inputTemp}°C is ${temp.toFixed(2)}°F`;
+                } else if (toCelcius.checked) {
+                    temp = (inputTemp - 32) * 5 / 9;
+                    result.textContent = `Result: ${inputTemp}°F is ${temp.toFixed(2)}°C`;
+                } else {
+                    result.textContent = "Result: Can you SELECT one of those";
+                }
+            }
+        </script>
+    </body>
+
+</html>
